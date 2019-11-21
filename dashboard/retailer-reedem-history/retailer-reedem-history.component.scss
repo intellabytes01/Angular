@@ -1,0 +1,22 @@
+.reedem-card{
+    border:1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px #ddd;
+    padding:5px;
+    .media-body{
+        .media-heading{
+            font-size: 18px;
+            margin-top: 10px;
+            
+        }
+        p{
+            margin-bottom:2px;
+            color:#757575;  
+        }   
+
+        
+    }
+}
+.block-content{
+    margin-top:40px;
+}

@@ -1,0 +1,170 @@
+<div class="card">
+        <div class="card-header">
+            <strong class="card-title">Enroll Plumber
+
+            </strong>
+        </div>
+        <div class="card-body">
+                <form  [formGroup]="plumberFrom" (submit)="savePlumber()" >
+                        <div class="row">
+                           
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label>First name</label>
+                                <input placeholder="Enter First Name" type="text" [class.alert-danger]="plumberFrom.controls['firstname'].dirty && plumberFrom.controls['firstname'].errors" class="form-control" formControlName="firstname">
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Last name</label>
+                                    <input placeholder="Enter Last Name" type="text" class="form-control"  formControlName="lastname">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Mobile</label>
+                                    <input placeholder="Enter Mobile" OnlyNumber="true" maxlength="10" minlength="10" [class.alert-danger]="plumberFrom.controls['mobileno'].dirty && plumberFrom.controls['mobileno'].errors" class="form-control" formControlName="mobileno">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Phone no</label>
+                                    <input placeholder="Enter Phone" OnlyNumber="true"  maxlength="10" class="form-control" formControlName="phoneno">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Dob </label>
+                                    <input type="date" class="form-control" formControlName="dob">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Email </label>
+                                    <input placeholder="Enter email" type="text" class="form-control" formControlName="email">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Address 1 </label>
+                                    <textarea placeholder="Enter Address" type="text" [class.alert-danger]="plumberFrom.controls['addr1'].dirty && plumberFrom.controls['addr1'].errors" class="form-control" formControlName="addr1"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Address 2</label>
+                                    <textarea placeholder="Enter Address" type="text" class="form-control" formControlName="addr2"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>State </label>
+                                    <select  class="form-control" fromControlName="state" [class.alert-danger]="plumberFrom.controls['state'].dirty && plumberFrom.controls['state'].errors">
+                                      <option value="{{item.id}}"  *ngFor="let item of stateList" >
+                                        {{item.name}}
+                                      </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>City </label>
+                                    <input placeholder="Enter City" type="text" class="form-control" formControlName="city">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Pincode </label>
+                                    <input class="Enter Pincode" OnlyNumber="true" maxlength="7" class="form-control" formControlName="pincode" [class.alert-danger]="plumberFrom.controls['pincode'].dirty && plumberFrom.controls['pincode'].errors">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Aadhar No </label>
+                                    <input placeholder="Aadhar no" OnlyNumber="true" class="form-control" formControlName="aadharno"  [class.alert-danger]="plumberFrom.controls['aadharno'].dirty && plumberFrom.controls['aadharno'].errors">
+                                    <input type="file" class="form-control" formControlName="aadharpic" [class.alert-danger]="plumberFrom.controls['aadharpic'].dirty && plumberFrom.controls['aadharpic'].errors">
+                                
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Pan Card </label>
+                                    <input placeholder="Pancard no" type="text" class="form-control" formControlName="pancardno" [class.alert-danger]="plumberFrom.controls['pancardno'].dirty && plumberFrom.controls['pancardno'].errors">
+                                    <input type="file" class="form-control" formControlName="panpic" [class.alert-danger]="plumberFrom.controls['panpic'].dirty && plumberFrom.controls['panpic'].errors">
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Bank name</label>
+                                    <input placeholder="Enter Bank Name" type="text" class="form-control" formControlName="bankname">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Bank A/c No</label>
+                                    <input placeholder="Enter Bank A/c" OnlyNumber="true" type="text" class="form-control" formControlName="bankacno">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Ifsc code</label>
+                                    <input placeholder="Enter Ifsc Code" type="text" class="form-control" formControlName="ifsccode">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Cancelled cheque pic</label>
+                                    <input type="file" class="form-control" formControlName="cancelledChequePic" [class.alert-danger]="plumberFrom.controls['cancelledChequePic'].dirty && plumberFrom.controls['cancelledChequePic'].errors">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Choose Any One</label>
+                                    <select formControlName="selectanyone" class="form-control" >
+                                      <option value="">Select any one</option>
+                                      <option value="0">Voter Card</option>
+                                      <option value="1">Driving License</option>
+                                      <option value="2">Passport</option>
+                                    </select>
+                                    <input type="file" class="form-control" formControlName="fileanyone">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group text-right mt-4">
+                                    
+                                    <button  class="btn btn-primary mr-2" type="submit" > Save </button>
+                                    <button  class="btn btn-success" [disabled]="isotpBtnDisabled" data-toggle="modal" data-target="#verifyotpM" > Verify Plumber </button>
+                          
+                                </div>
+                            </div>
+                          </div>
+                    </form>
+        </div>
+    </div>
+
+<div id="verifyotpM" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <form [formGroup]="verifyOtp" (submit)="verifyPlumber()">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Verify Plumber</h4>
+          </div>
+          <div class="modal-body">
+              <label>Verify </label>
+              <input placeholder="Enter OTP" class="form-control" type="text" formControlName="otpfield" >
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success"  >Verify</button>
+          </div>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+

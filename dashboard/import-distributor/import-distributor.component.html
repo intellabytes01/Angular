@@ -1,0 +1,27 @@
+<div *ngIf="isShown" [ngClass]="alertClass" class="alert-dismissible" > 
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{alertMessage}}
+</div>
+<div class="panel panel-default">
+  <form [formGroup]="importForm" (submit)="import()">
+    <div class="panel-heading">
+      <h4>Imports</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <select class="form-control" formControlName="selectType" [class.alert-danger]="importForm.controls['selectType'].dirty && importForm.controls['selectType'].errors" >
+              <option value="">Select Type</option>
+              <option value="{{item.value}}" *ngFor="let item of selectPerson">{{item.title}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="file" (change)="getFileDetails($event)" class="form-control" accept=".xlsx, .xls, .csv"  formControlName="importFile" [class.alert-danger]="importForm.controls['importFile'].dirty && importForm.controls['importFile'].errors" >
+        </div>
+        
+    </div>
+    <div class="panel-footer text-right">
+      <button type="submit" class="btn btn-primary">Submit </button>
+    </div>
+</form>
+</div>
+

@@ -1,0 +1,29 @@
+
+  <div  >
+      <h3 class="mb-6">Select Plumber for sales submit</h3>
+      <table datatable class="row-border hover">
+        <thead>
+          <tr>
+            <th>Sr no</th>
+            <th>Name</th>
+            <th>No</th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of distributer;let i = index">
+            <td>
+              {{i}}
+            </td>
+            <td>
+              {{item.name}}
+            </td>
+            <td>
+              <a class="anchor" (click)="viewPerson($event,'plumber','sale')">{{item.no}}</a>
+            </td>
+          </tr>
+  
+        </tbody>
+      </table>
+    </div>
+

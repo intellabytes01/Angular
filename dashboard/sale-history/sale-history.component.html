@@ -1,0 +1,31 @@
+<table datatable>
+  <thead>
+    <tr>
+      <th *ngFor="let item of saleHeader">
+        {{item.title}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of saleData">
+      <td>
+        {{item.productname}}
+      </td>
+      <td>
+        {{item.plumberName}}
+      </td>
+      <td>
+        {{item.quantity}}
+      </td>
+      <td>
+        {{item.Time}}
+      </td>
+      <td>
+        {{item.date}}
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+

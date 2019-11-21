@@ -1,0 +1,327 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Enroll Retailer</h1>
+        
+    </div>
+  </div>
+
+      <wizard class="retailer-form" *ngIf="wizardBox" >
+          <wizard-step stepTitle="Basic Information" [canExit]='true'>
+              <form [formGroup]="basicForm" (submit)=basicInfo() >
+                  <div class="row ">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="control-label " for="firstname">Select Distributer*</label>
+                          <input (input)="filterDistributor($event)"
+                           placeholder="Start Typing" 
+                           class="form-control" list="browsers" name="browser" formControlName="selectDistributer">
+                          
+                          <virtual-scroller *ngIf="distributors.length > 0 && showSelection" #scroll [items]="distributors">
+                            <ul class="list-group">
+                                  <li class=" list-group-item" *ngFor="let item of scroll.viewPortItems" (click)="setNameValue(item.name)">
+                                    {{item.name}}
+                                  </li>
+                            </ul>
+                             
+                          
+                          </virtual-scroller>
+                          
+                         
+                        </div>
+                      </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="firstname">First Name*</label>
+                        
+                        <input [class.alert-danger]="basicForm.controls['firstname'].dirty && basicForm.controls['firstname'].errors"
+                        type="text" class="form-control" id="fname" placeholder="First Name" formControlName="firstname">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="lname">Last Name*</label>
+                        <input type="text" [class.alert-danger]="basicForm.controls['lstname'].dirty && basicForm.controls['lstname'].errors" class="form-control" id="lname" placeholder="Last Name" formControlName="lstname">
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="gender">Gender*</label>
+                        <select [class.alert-danger]="basicForm.controls['gender'].dirty && basicForm.controls['gender'].errors" class="form-control" id="gender" formControlName="gender" >
+                          <option value="">Select Gender</option>
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="dob">Date Of Birth*</label>
+                        <input [class.alert-danger]="basicForm.controls['dob'].dirty && basicForm.controls['dob'].errors" type="date"  class="form-control" id="dob" placeholder="Date of birth" formControlName="dob">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="matstat">Marital Staus*</label>
+                        <select [class.alert-danger]="basicForm.controls['MaritalStat'].dirty && basicForm.controls['MaritalStat'].errors" name="" id="matstat" class="form-control" formControlName="MaritalStat">
+                          <option value="">Marital Status</option>
+                          <option value="0">Single</option>
+                          <option value="1">Married</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label  class="control-label " for="addr1">Address Line 1*</label>
+                        <textarea [class.alert-danger]="basicForm.controls['addrBasic'].dirty && basicForm.controls['addrBasic'].errors" id="addr1" placeholder="Enter Address" class="form-control" formControlName="addrBasic"></textarea>
+                      </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label  class="control-label " for="doa">DOA*</label>
+                        <input [class.alert-danger]="basicForm.controls['doa'].dirty && basicForm.controls['doa'].errors" type="date" id="doa" placeholder="Enter DOA" class="form-control" formControlName="doa">
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="form-group text-right">
+                           
+                          <button  nextStep type="submit"  [disabled]="basicForm.invalid"  class="btn btn-primary">next</button>
+                        </div>
+                      </div>
+                  </div>
+                </form>
+            
+          </wizard-step>
+          <wizard-step stepTitle="Contact Information" awOptionalStep>
+              <form [formGroup]="contactForm" (submit)=contactInfo()>
+        
+                  <div class="row">
+                    
+                      <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="mobile">Mobile*</label>
+                            <input [class.alert-danger]="contactForm.controls['mobile'].dirty && contactForm.controls['mobile'].errors"
+                            OnlyNumber="true" maxlength="10"  class="form-control" id="mobile"  placeholder="Mobile" formControlName="mobile">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="phone">Phone*</label>
+                            <input  [class.alert-danger]="contactForm.controls['phone'].dirty && contactForm.controls['phone'].errors"
+                            type="text"  OnlyNumber="true" class="form-control" maxlength="10" id="phone" placeholder="Phone" formControlName="phone">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="email">Email*</label>
+                            <input [class.alert-danger]="contactForm.controls['email'].dirty && contactForm.controls['email'].errors"
+                             type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
+                          </div>
+                        </div>
+                    
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="control-label " for="gstin">GSTIN*</label>
+                          <input [class.alert-danger]="contactForm.controls['gstin'].dirty && contactForm.controls['gstin'].errors"
+                           type="text" class="form-control" id="gstin" placeholder="GSTIN" formControlName="gstin">
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label class="control-label " for="shopaddr">Address*</label>
+                          <textarea [class.alert-danger]="contactForm.controls['addr2'].dirty && contactForm.controls['addr2'].errors"
+                           name="" id="" id="shopaddr" class="form-control" placeholder="Enter Address" formControlName="addr2"></textarea>
+                          
+                        </div>
+                      </div>
+                      
+              
+                      <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="city">State*</label>
+                            <select [class.alert-danger]="contactForm.controls['state'].dirty && contactForm.controls['state'].errors"
+                             id="city" class="form-control" formControlName="state">
+                              <option value="">State</option>
+                              <option *ngFor='let item of stateList' value="{{item.id}}">
+                                {{item.name}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="city">City*</label>
+                            <input type="text" placeholder="City" [class.alert-danger]="contactForm.controls['city'].dirty && contactForm.controls['city'].errors"
+                             class="form-control" formControlName="city">
+                              
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="area">Area*</label>
+                            <input type="text" [class.alert-danger]="contactForm.controls['city'].dirty && contactForm.controls['city'].errors"
+                            class="form-control" placeholder="Area" formControlName="area">
+                           
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="control-label " for="pincode">Pincode*</label>
+                            <input [class.alert-danger]="contactForm.controls['pincode'].dirty && contactForm.controls['pincode'].errors"
+                             type="text" id="pincode" placeholder="Enter Pincode" class="form-control" formControlName="pincode">
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group text-right">
+                                <a   class="btn btn-default mr-2" previousStep>Previous</a>
+                                <button type="submit" [disabled]="contactForm.invalid"  class="btn btn-primary" nextStep>next</button>
+                            </div>
+                          </div>
+                        
+                    </div>
+                </form>
+            
+            
+          </wizard-step>
+          <wizard-step stepTitle="Fill Plumber Details" awOptionalStep>
+              <form [formGroup]="plumberForm" (submit)=plumberInfo()>
+         
+                  <div class="row">
+            
+                  
+                  <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="Plumber1">Plumber 1 Mobile*</label>
+                        <input [class.alert-danger]="plumberForm.controls['plumber1'].dirty && plumberForm.controls['plumber1'].errors" 
+                         type="text" OnlyNumber="true" class="form-control" id="Plumber" maxlength="10" placeholder="Enter mobile"  formControlName="plumber1">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="Plumber2">Plumber 2 Mobile*</label>
+                        <input [class.alert-danger]="plumberForm.controls['plumber2'].dirty && plumberForm.controls['plumber2'].errors"
+                         type="text" OnlyNumber="true" class="form-control" id="Plumber2" maxlength="10" placeholder="Enter mobile" formControlName="plumber2">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="control-label " for="Plumber3">Plumber 3 Mobile*</label>
+                        <input [class.alert-danger]="plumberForm.controls['plumber3'].dirty && plumberForm.controls['plumber3'].errors"
+                         type="text" OnlyNumber="true" class="form-control" id="Plumber3" maxlength="10" placeholder="Enter mobile" formControlName="plumber3">
+                      </div>
+                    </div>
+                   
+                    <div class="col-lg-12">
+                      <div class="form-group text-right">
+                          <a   class="btn btn-default mr-2" previousStep>Previous</a>
+                          <button type="submit"   class="btn btn-primary mr-2" [disabled]="plumberForm.invalid" nextStep>Save</button>
+                          <button type="button" class="btn btn-success " data-toggle="modal" data-target="#verifyOtp"   [disabled]="!isSubmit" nextStep>Verify Otp</button>
+                          
+                      
+                      </div>
+                    </div>
+                  </div>
+                  
+            
+                </form>
+                
+               
+                
+               
+            </wizard-step>
+          <!-- <wizard-step stepTitle="Verify Otp">
+              
+              
+                
+          </wizard-step> -->
+        </wizard>
+        <div id="verifyOtp" class="modal fade" role="dialog" #modalClose>
+            <div class="modal-dialog">
+          
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Verify OTP</h4>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="verifyOTPForm" class="m-0" (submit)=verifyOTP() >
+                        <div class="row">
+                          <div class="col-lg-12">
+                              <div class="form-group">
+                                <label class="control-label " for="Verify">You should recieve an sms. Please enter OTP</label>
+                                <input [class.alert-danger]="verifyOTPForm.controls['verotp'].dirty && verifyOTPForm.controls['verotp'].errors" 
+                                  type="text" maxlength="6"   class="form-control" id="verifyOtp" placeholder="Verify otp"  formControlName="verotp">
+                                <span *ngIf ='isError' [class.text-danger]="isError">{{errorMessage}}</span>
+                              </div>
+                              <div class="form-group text-right">
+                                <button type="submit" class="btn btn-primary" [disabled]="verifyOTPForm.invalid">Verify OTP</button>
+                              </div>
+                          </div>
+                        </div>
+      
+                     </form>
+                </div>
+                
+              </div>
+          
+            </div>
+          </div>
+ 
+        <div *ngIf="!wizardBox" >
+          <form [formGroup]="kycForm" submit="kycInfo()">
+            <div class="form-group">
+              <label class="control-label " for="shoppic">Click Shop Picture*</label>
+              <input [class.alert-danger]="kycForm.controls['shoppic'].dirty && kycForm.controls['shoppic'].errors" 
+               type="file"  class="form-control" id="shoppic"   formControlName="shoppic">
+            </div>
+            <div class="form-group">
+              <label class="control-label " for="aadhar">Aadhar Card*</label>
+              <input [class.alert-danger]="kycForm.controls['aadhar'].dirty && kycForm.controls['aadhar'].errors" 
+               type="file"  class="form-control" id="aadhar"   formControlName="aadhar">
+            </div>
+            <div class="form-group">
+              <label class="control-label " for="gstdoc">Gst Document*</label>
+              <input [class.alert-danger]="kycForm.controls['gstdoc'].dirty && kycForm.controls['gstdoc'].errors" 
+               type="file"  class="form-control" id="gstdoc"   formControlName="gstdoc">
+            </div>
+            <div class="form-group">
+              <label class="control-label " for="selectanyone">Select Any One*</label>
+              <select [class.alert-danger]="kycForm.controls['selectanyone'].dirty && kycForm.controls['selectanyone'].errors" 
+                class="form-control" id="selectanyone"  formControlName="selectanyone">
+                <option value="">Select any one</option>
+                <option value="0">Voter Card</option>
+                <option value="1">Driving License</option>
+                <option value="2">Pan Card</option>
+               </select>
+               <input [class.alert-danger]="kycForm.controls['anyonedoc'].dirty && kycForm.controls['anyonedoc'].errors" 
+               type="file"  class="form-control" id="anyonedoc"   formControlName="anyonedoc">
+            </div>
+            <div class="form-group text-right">
+                <a class="btn btn-default mr-2" (click)="gotoprev()">Previous</a>
+                <a class="btn btn-primary" type="submit">Submit Kyc</a>
+            </div>
+            
+          </form>
+        </div>
+  
+
+  
+  
+
+ 
+
+  
+  
+
+  
+   
+ 
+  

@@ -1,0 +1,83 @@
+
+
+      
+      <div class="row apply-table">
+          <form [formGroup]="pushNotificationForm" class="form-horizontal" (submit)="submtiMessage()">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                        <h4>Send us your query</h4>
+                  </div>
+                  <div class="panel-body">
+                        <div *ngIf="isAlertShown" [ngClass]="alertClass" class="alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{alertMessage}}</strong>
+                        </div>
+                        <div class="col-lg-12">
+                                
+                                <div class="form-group">
+                                  <label class="col-lg-2">Select Retailer</label>
+                                  <div class="col-lg-10">
+                                    <input type="text" class="form-control" placeholder="Search User">
+                                    <ul class="list-unstyled user-data">
+                                        
+                                      
+                                    <virtual-scroller #scroll [items]="userList">
+
+                                        <li *ngFor="let item of scroll.viewPortItems" id="{{item.pk_user_id}}" (click)="selectUser(item)"  [ngClass]="{'product-select': item.selected, 'product-unselect': !item.selected}">
+                                            {{item.name}} thi
+                                        </li>
+                                    
+                                    </virtual-scroller>
+                                  </ul>
+                                    <!-- <ul class="list-unstyled user-data">
+                                      <li *ngFor="let item of userList;let i = index" id="{{item.pk_user_id}}" (click)="selectUser(item)"  [ngClass]="{'product-select': item.selected, 'product-unselect': !item.selected}">
+                                          {{item.phone}}
+                                      </li>
+                                    </ul> -->
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2">Type</label>
+                                    <div class="col-lg-10">
+                                            <select class="form-control " formControlName="title">
+                                                    <option value="">Select Type</option>
+                                                    <option value="Product">Product</option>
+                                                    <option value="Point">Point</option>
+                                                    <option value="Redemption">Redepmtion</option>
+                                                    <option value="Order Intent">Order Intent</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                    </div>
+                                   
+                                    
+                                </div>
+                                <div class="form-group">
+                                        <label class="col-lg-2">Query</label>
+                                        <div class="col-lg-10">
+                                                <textarea class="form-control mb-4" rows="6" placeholder="Enter your query" formControlName="message"></textarea>
+                                        </div>
+                                    
+                                </div>
+                                
+                                
+                                
+                            </div>
+                  </div>
+                  <div class="panel-footer">
+                      <div class="row">
+                            <div class="col-lg-12">
+                                    <div class="text-right">
+                                            <button class="btn btn-primary" [disabled]="pushNotificationForm.invalid" type="submit">Sumbit</button>
+                                        </div>
+                              </div>
+                      </div>
+                      
+                        
+                  </div>
+              </div>
+                
+          </form>
+       
+      </div>
+       
+ 

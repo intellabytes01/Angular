@@ -1,0 +1,72 @@
+
+
+          <div class="card">
+            <div class="card-header">
+              <h4>User Management</h4>
+            </div>
+            <div class="card-body">
+              <div class="default-tab">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active show"  data-toggle="tab" href="#nav-plumber" role="tab" aria-controls="nav-home" aria-selected="false">Plumber</a>
+                    <!-- <a class="nav-item nav-link"  data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                    <a class="nav-item nav-link "  data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="true">Contact</a> -->
+                  </div>
+                </nav>
+                <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                  <div class="tab-pane fade active show" id="nav-plumber" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <div class="table-data__tool">
+                          <div class="table-data__tool-left">
+                              
+                          </div>
+                          <div class="table-data__tool-right">
+                              <a class="au-btn au-btn-icon au-btn--green au-btn--small" [routerLink]="['./../enroll-plumber']">
+                                  <i class="zmdi zmdi-plus"></i>Enroll New 
+                                  Plumber</a>
+                              
+                          </div>
+                      </div>  
+                    
+                    <div class="table-responsive table--no-card m-b-40">
+                        <table class="table table-borderless table-striped table-earning">
+                          <thead>
+                            <tr>
+                                <th *ngFor="let thItem of userHeader">
+                                    {{thItem.name}}
+                                </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr  *ngFor="let user of plumbUserData;let i=index" >
+                                  <td>{{i}}</td>
+                                  <td>{{user.mobile}}</td>
+                                  <td>{{user.name}}</td>
+                                  <td class="actions">
+                                      <div class="table-data-feature">
+                                          <button class="item" (click)="moveToProfile(user.mobile,user.type)" data-toggle="tooltip" data-placement="top" title="View Profile" data-original-title="Send">
+                                              <i class="fa fa-user"></i>
+                                          </button>
+                                          <button class="item" [ngClass]="isActive" data-toggle="tooltip" data-placement="top" title="Status" data-original-title="Edit">
+                                              <i class="fa fa-circle"></i>
+                                          </button>
+                                          
+                                          
+                                      </div>
+                                  </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                  </div>
+                 
+                </div>
+
+              </div>
+            </div>
+          </div>
+       
+  
+  
+  
+  
+  

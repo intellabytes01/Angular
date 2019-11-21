@@ -1,0 +1,99 @@
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">Profile
+            
+        </strong>
+    </div>
+    <div class="card-body">
+            <div *ngIf="isAlertShown" [ngClass]="alertClass" class=" alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{{alertMessage}}</strong>
+                </div>
+                <form [formGroup]="userprofile" (submit)="updateProfile()">
+                    <div class="profile">
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">First Name</label>
+                                
+                                  <input [class.alert-danger]="userprofile.controls['firstName'].dirty && userprofile.controls['firstName'].errors" type="text"  class="form-control" placeholder="First Name" formControlName="firstName" >
+                                
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Last Name</label>
+                                
+                                  <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"  >
+                              
+                              </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Mobile No</label>
+                                
+                                  <input OnlyNumber="true" [class.alert-danger]="userprofile.controls['mobileNo'].dirty && userprofile.controls['mobileNo'].errors" maxlength="10" minlength="10" class="form-control" placeholder="Mobile No" formControlName="mobileNo" disabled >
+                                
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Email </label>
+                                
+                                  <input type="text" class="form-control" placeholder="Email" formControlName="email" >
+                                
+                              </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Address 1 </label>
+                                <textarea name="" id="" class="form-control" placeholder="Address 1" formControlName="addr1" ></textarea>
+                                
+                                
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Address 2 </label>
+                                <textarea name="" id=""  class="form-control"  placeholder="Address 2" formControlName="addr2" ></textarea>
+                                  
+                              
+                              </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">City </label>
+                                <input name="" id=""  class="form-control"  placeholder="City" formControlName="city" >
+                                  
+                              
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Pincode</label>
+                                <input name="" id=""  class="form-control"  placeholder="Pincode" formControlName="pincode" >
+                                  
+                              
+                              </div>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      
+                      <div class="form-group text-right">
+                          <button type="submit" class="btn btn-primary" [disabled]="userprofile.invalid">Update Profile</button>
+                      </div>
+                  </div>
+                </form>
+                
+    </div>
+</div>
+

@@ -1,0 +1,46 @@
+<!-- <div class="sidebar">
+  <div class="sidebar-wrapper">
+
+    <ul class="nav responsive-nav">
+
+      <li *ngFor="let item of menuItems; let i=index">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion">
+              <a [routerLink]="item.child? '#collapse'+i : item.url">
+                <p>{{item.title | translate}}</p>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse" class="panel-collapse collapse" *ngIf="item.child">
+              <div class="panel-body" *ngFor="let child of item.child">
+                <ul>
+                  <li><a [routerLink]="[child.url]">{{child.title}}</a></li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </li>
+    </ul>
+
+     
+  </div>
+</div> -->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a href="#">
+        <img src="../../assets/images/logo.png" alt="Cool Admin" />
+      </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+      <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar__list">
+          <li *ngFor="let item of menuItems; let i=index">
+            <a class="js-arrow"  [routerLink]="item.url">
+              <i class="{{item.icon}}"></i> {{item.title | translate}}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>

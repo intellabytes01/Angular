@@ -1,0 +1,161 @@
+
+    <div class="card">
+      <div class="card-header">
+        <h4>Reward Catalogue</h4>
+      </div>
+      <div class="card-body">
+        <div class="default-tab">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Base Point Catalogue</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Multiplier Points Catalogue</a>
+              <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
+            </div>
+          </nav>
+          <div class="tab-content pt-2" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div id="accordion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Filters
+                          </a>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="row">
+                    
+                                <div class="col-lg-6">
+                                  <div class="range-main">
+                    
+                                  
+                                    <form >
+                                      <div class="form-group rangeselection">
+                                        <label for="email ">Reward Range:</label>
+                                        <div class="range">
+                                            <label>Min</label>
+                                            <input type="text" class="form-control mb-3" value="0" disabled >
+                                            <label>Max</label>
+                                            <input type="text" class="form-control" placeholder="enter range value" >
+                                            
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="pwd">Item Category:</label>
+                                        <select class="form-control" >
+                                          <option>a </option>
+                                        </select>
+                                      </div>
+                                      
+                                      
+                                    </form>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="range-main second">
+                    
+                                  
+                                        <form >
+                                            
+                                          <div class=" reward-points">
+                                           
+                                            <table class="table">
+                                              <tbody>
+                                                  <tr>
+                                                      <td>
+                                                        <label for="">Accumulated reward value</label>
+                                                          
+                                                        </td>
+                                                        <td>
+                                                            20000
+                                                          </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td>
+                                                        <label for="">Growth value</label>
+                                                          
+                                                        </td>
+                                                        <td>
+                                                            20000
+                                                          </td>
+                                                  </tr>
+                                                <tr>
+                                                    <td>
+                                                      <label for="">Total Reward value</label>
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          20000
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                       <label>Total Redeemed  value</label> 
+                                                      </td>
+                                                      <td>
+                                                          30000
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                      <label for="">
+                                                          Balance  value
+                                                      </label>
+                                                        
+                                                      </td>
+                                                      <td>
+                                                         4000
+                                                        </td>
+                                                </tr>
+                                                
+                                              </tbody>
+                                            </table>
+                                           
+                                          </div>
+                                          
+                                          
+                                          
+                                        </form>
+                                      </div>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                
+                </div>  
+                <div class="row">
+                  <div class="col-lg-12 text-right mb-4">
+                      <button class="btn btn-primary mr-2" (click)="prev('M')"><i class="fa fa-angle-left"></i> Prev</button><button class="btn btn-primary" (click)="next('M')">Next <i class="fa fa-angle-right"></i></button>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of rewardCatM;let i = index">
+                        <div class="card">
+                            <img class="card-img-top" src="https://sintextanks.evolvebrands.asia/Assets/Images/ProductRetailerCatalogue/{{item.product_code}}.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">{{item.product_name}}</h4>
+                                <p class="card-text">
+                                  {{item.product_code}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+
+

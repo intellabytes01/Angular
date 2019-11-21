@@ -1,0 +1,43 @@
+<div class="row" *ngIf="">
+  <div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Select Product</strong>
+        </div>
+        <div class="card-body">
+            <input type="text" class="form-control" placeholder="Search Product" [(ngModel)]="dataVal"  (change)="searchUser()">
+            <ul class="list-unstyled user-data">
+              <virtual-scroller #scroll [items]="prodList">
+                <li *ngFor="let item of scroll.viewPortItems"  (click)="selectUser(item)"  [ngClass]="{'product-select': item.selected, 'product-unselect': !item.selected}">
+                    {{item.product_name}}
+                </li>
+              </virtual-scroller>
+          </ul>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+
+<div class="table-responsive table--no-card m-b-40" >
+  <table class="table table-borderless table-striped table-earning">
+    <thead>
+      <tr>
+        <th>Srno</th>
+        <th>Product name</th>
+        <th>Quantity</th>
+        <th class="text-right">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Sintax tank</td>
+        <td><input type="number"></td>
+        <td class="text-right"><a class="btn btn-primary">Submit</a></td>
+      </tr>
+    </tbody>
+ </table>
+</div>

@@ -1,0 +1,172 @@
+<!-- 
+type of filters
+<br>
+Type of graph
+<br>
+tables when view comparision -->
+
+<div class="row m-0 ">
+    <div class="col-lg-3 col-lg-offset-9">
+        
+        <div class="form-group">
+            <select class="form-control mb-4" [(ngModel)]="selectedUserType" (ngModelChange)="changeUserType($event)"
+                >
+                <option value="1">Self</option>
+                <option *ngFor="let opt of options">{{opt.title}}</option>
+            </select>
+        </div>
+        
+
+    </div>
+</div>
+
+
+<div class="row m-0 reward-section">
+    <div class="col-lg-4 col-md-4" *ngFor="let dashItem of dashData">
+        <div class="card apply-radius apply-shadow ">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="icon-box">
+                            <i class="fa" [ngClass]="dashItem.icon"></i>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="category">
+                            <p class="whatcategory">
+                                {{dashItem.name}}
+                            </p>
+                            <p class="points">
+                                &#8377; {{dashItem.reward}}
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr>
+                        <a class="anchor" [routerLink]="dashItem.url"> View All</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row m-0">
+    <div class="col-md-3">
+        <div class="form-group">
+                <input type="datetime" 
+                type="date" 
+                
+                placeholder="Start Date" class="form-control">
+        </div>
+        
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+                <input type="date" 
+                
+                placeholder="End Date" class="form-control">
+        </div>
+        
+    </div>
+    <div class="col-md-3" *ngIf="hideZoneDropDown">
+        <div class="form-group">
+                <select class="form-control mb-4" [disabled]="isZoneSelectionDisabled" [(ngModel)]="selectedZone" (ngModelChange)="changeZone($event)">
+                        <option *ngFor="let zone of zones;let i = index;" value="{{i}}">{{zone.title }}</option>
+                    </select>
+        </div>
+        
+    </div>
+    <div class="col-md-3" *ngIf="hideBranchDropDown">
+        <div class="form-group">
+                <select class="form-control mb-4" [disabled]="isBranchSelectionDisabled" [(ngModel)]="selectedBranch" (ngModelChange)="changeBranch($event)">
+                        <option *ngFor="let branch of branches;let i=index" value="{{i}}">{{branch.title}}</option>
+                    </select>
+        </div>
+            
+    </div>
+    
+</div>
+<div class="row m-0" *ngIf="isSalePurchaseShown">
+    <div class="col-lg-12">
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#sale">Sale</a></li>
+        <li><a data-toggle="tab" href="#purchase">Purchase</a></li>
+        
+
+
+      </ul>
+
+
+      <div class="tab-content">
+
+        <div id="sale" class="tab-pane fade in active">
+            
+          <table datatable class="row-border hover">
+            <thead>
+              <tr>
+                <th *ngFor="let thItem of userHeader">
+                    {{thItem.name}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let user of distUserData;let i=index" >
+                <td>{{i}}</td>
+                <td>{{user.mobile}}</td>
+                <td>{{user.name}}</td>
+                <td class="actions">
+
+                  <a class="btn btn-info" (click)="moveToProfile(user.mobile,user.type)" ><i class="fa fa-user"></i></a>
+                  <a class="btn btn-primary" href="#"><i class="fa fa-circle" [ngClass]="isActive"></i></a>
+                  <a class="btn btn-warning" href="#"><i class="fa fa-area-chart"></i> </a>
+
+
+                </td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+        <div id="purchase" class="tab-pane fade">
+         
+          <table datatable class="row-border hover">
+            <thead>
+              <tr>
+                  <th *ngFor="let thItem of userHeader">
+                      {{thItem.name}}
+                  </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let user of retlUserData;let i=index" >
+                    <td>{{i}}</td>
+                    <td>{{user.mobile}}</td>
+                    <td>{{user.name}}</td>
+                    <td class="actions">
+    
+                      <a class="btn btn-info" (click)="moveToProfile(user.mobile,user.type)" ><i class="fa fa-user"></i></a>
+                      <a class="btn btn-primary" href="#"><i class="fa fa-circle" [ngClass]="isActive"></i></a>
+                      <a class="btn btn-warning" href="#"><i class="fa fa-area-chart"></i> </a>
+    
+    
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+        
+
+
+      </div>
+    </div>
+  </div>

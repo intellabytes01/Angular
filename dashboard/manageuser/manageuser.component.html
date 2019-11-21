@@ -1,0 +1,187 @@
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h4>User Management</h4>
+    </div>
+    <div class="card-body">
+      <div class="default-tab">
+        <nav>
+          <div class="nav nav-tabs " id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active show"  id="nav-home-tab" data-toggle="tab" href="#distributer" role="tab" aria-controls="nav-home" aria-selected="false">Distributor</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#retailer" role="tab" aria-controls="nav-profile" aria-selected="false">Retailer</a>
+            <a class="nav-item nav-link " id="nav-contact-tab" data-toggle="tab" href="#plumber" role="tab" aria-controls="nav-contact" aria-selected="true">Plumber</a>
+          </div>
+        </nav>
+          <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+            <div class="tab-pane fade  active show" id="distributer" role="tabpanel" aria-labelledby="nav-home-tab">
+             
+            <div class="table-responsive table--no-card m-b-40">
+              <table class="table table-borderless table-striped table-earning">
+                  <thead>
+                      <tr>
+                        <th *ngFor="let thItem of userHeader">
+                          {{thItem.name}}
+                        </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let user of distUserData;let i=index">
+                        <td>{{i}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.mobile}}</td>
+                        <td class="actions">
+                
+                          <div class="table-data-feature">
+                            <button class="item" (click)="moveToProfile(user.mobile,user.type)" data-toggle="tooltip" data-placement="top" title="View Profile" data-original-title="Send">
+                                <i class="fa fa-user"></i>
+                            </button>
+                            <button class="item" [ngClass]="isActive" data-toggle="tooltip" data-placement="top" title="Status" data-original-title="Edit">
+                                <i class="fa fa-circle"></i>
+                            </button>
+                            
+                            
+                        </div>
+                          <!-- <a class="btn btn-info" (click)="moveToProfile(user.mobile,user.type)" title="View Profile" ><i class="fa fa-user"></i></a>
+                          <a class="btn btn-primary" ><i class="fa fa-circle" [ngClass]="isActive" title="Status"></i></a> -->
+                          <!-- <a class="btn btn-warning" [routerLink]="['/dashboard/sale']"  title="Submit Sale Report"><i class="fa fa-area-chart"></i> </a> -->
+                          <!-- <a class="btn btn-success" [routerLink]="['/dashboard/purchase']"  title="Submit Purchase Report"><i class="fa fa-shopping-cart"></i> </a> -->
+                
+                
+                        </td>
+                      </tr>
+                      
+                  </tbody>
+              </table>
+            </div>
+            
+          </div>
+          <div class="tab-pane fade" id="retailer" role="tabpanel" aria-labelledby="nav-profile-tab">
+           
+            <div class="table-data__tool">
+              <div class="table-data__tool-left">
+                  
+              </div>
+              <div class="table-data__tool-right">
+                  <a class="au-btn au-btn-icon au-btn--green au-btn--small" [routerLink]="['/dashboard/enroll-retailer']">
+                      <i class="zmdi zmdi-plus"></i>Enroll New 
+                      Retailer</a>
+                  
+              </div>
+          </div>
+            <table  class="table table-borderless table-striped table-earning">
+              <thead>
+                <tr>
+                    <th *ngFor="let thItem of userHeader">
+                        {{thItem.name}}
+                    </th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr  *ngFor="let user of retlUserData;let i=index" >
+                      <td>{{i}}</td>
+                      <td>{{user.name}}</td>
+                  <td>{{user.mobile}}</td>
+<td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
+                                                            <i class="zmdi zmdi-mail-send"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                       
+                                                    </div>
+                                                </td>
+
+
+
+                      <!-- <td class="actions">
+          
+                          <a class="btn btn-info" (click)="moveToProfile(user.mobile,user.type)" title="View Profile" ><i class="fa fa-user"></i></a>
+                          <a class="btn btn-primary" href="#"><i class="fa fa-circle" [ngClass]="isActive" title="Status"></i></a>
+                          <a class="btn btn-warning" href="#" title="Reports"><i class="fa fa-area-chart"></i> </a>
+          
+          
+                      </td> -->
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade " id="plumber" role="tabpanel" aria-labelledby="nav-contact-tab">
+            
+            <div class="table-data__tool">
+              <div class="table-data__tool-left">
+                  
+              </div>
+              <div class="table-data__tool-right">
+                  <a class="au-btn au-btn-icon au-btn--green au-btn--small" [routerLink]="['/dashboard/enroll-plumber']">
+                      <i class="zmdi zmdi-plus"></i>Enroll New 
+                      Plumber</a>
+                  
+              </div>
+          </div>
+           
+            <table  class="table table-borderless table-striped table-earning">
+              <thead>
+                <tr>
+                    <th *ngFor="let thItem of userHeader">
+                        {{thItem.name}}
+                    </th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr  *ngFor="let user of plumbUserData;let i=index" >
+                      <td>{{i}}</td>
+                      <td>{{user.name}}</td>
+                      <td>{{user.mobile}}</td>
+                      <td class="actions">
+                          <div class="table-data-feature">
+                              <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
+                                  <i class="zmdi zmdi-mail-send"></i>
+                              </button>
+                              <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                  <i class="zmdi zmdi-edit"></i>
+                              </button>
+                              <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                  <i class="zmdi zmdi-delete"></i>
+                              </button>
+                             
+                          </div>
+                      </td>
+          
+                          <!-- <a class="btn btn-info" (click)="moveToProfile(user.mobile,user.type)" title="View Profile" ><i class="fa fa-user"></i></a>
+                          <a class="btn btn-primary" href="#"><i class="fa fa-circle" [ngClass]="isActive" title="Status"></i></a> -->
+                          <!-- <a class="btn btn-warning" href="#" title="Reports"><i class="fa fa-area-chart"></i> </a> -->
+          
+          
+                      <!-- </td> -->
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div id="distributer" class="tab-pane fade in active">
+  
+  
+  
+</div>
+<div id="retailer" class="tab-pane fade">
+
+</div>
+<div id="plumber" class="tab-pane fade">
+
+</div>
+
+
+
+
+

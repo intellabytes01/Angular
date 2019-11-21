@@ -1,0 +1,34 @@
+
+    <div  >
+        
+        <table datatable class="row-border hover">
+          <thead>
+            <tr>
+              <th>Sr no</th>
+              <th>Name</th>
+              <th>No</th>
+              <th>Action</th>
+    
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of approvalList;let i = index">
+              <td>
+                {{i}}
+              </td>
+              <td>
+                {{item.name}}
+              </td>
+              <td>
+                <a class="anchor" (click)="viewPerson($event,'plumber','purchase')">{{item.no}}</a>
+              </td>
+              <td>
+                  <a class="anchor" class="btn btn-success mr-2"><i class="fa fa-check"></i></a>
+                  <a class="anchor" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+    
+          </tbody>
+        </table>
+      </div>
+

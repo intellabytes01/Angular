@@ -1,0 +1,116 @@
+<div class="row m-0 bg-light-grey">
+    <div class="col-md-4 col-md-offset-4   login">
+
+        <div class="login-container">
+            <div class="box">
+                <div class="logo-container">
+                    <img src="../../../assets/images/logo.png" class="img-responsive">
+                </div>
+
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#login">Login</a></li>
+                    <li><a data-toggle="pill" href="#register">Forgot Password</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="login" class="tab-pane fade in active">
+                        <div class="head text-center">
+                            <div class="alert" *ngIf="log_messageShow" [ngClass]="log_messageLook">
+                                {{log_message}}
+                            </div>
+                        </div>
+
+                        <form [formGroup]="loginForm" (submit)="login(loginForm)">
+                            
+                            <div class="form-group">
+
+                                <input OnlyNumber="true" class="form-control" formControlName="mobileL" placeholder="Mobile" maxlength="10" >
+                            </div>
+                            <div class="form-group">
+
+                                <input type="password" class="form-control" formControlName="passwordL" placeholder="Password">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]='!loginForm.valid || isLoading'>
+                                Login <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+
+                            </button>
+                        </form>
+                    </div>
+                    <div id="register" class="tab-pane fade">
+                        <div class="head text-center">
+                            <!-- <h2>Forget</h2> -->
+                            <!-- <p>Please enter your Mobile</p> -->
+
+                        </div>
+
+                        <form [formGroup]="forgotFormWithoutOtp" (submit)="recover()" *ngIf="isShown" >
+                            <div class="form-group">
+
+                                <input OnlyNumber="true" class="form-control" formControlName="recoverMobile" placeholder="Mobile" maxlength="10">
+                            </div>
+                            
+                            
+                            <div class="form-group text-right">
+                                    
+                                    <a ><i class="fa fa-refresh mr-1"></i>Resend OTP</a>
+                                </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]='!forgotFormWithoutOtp.valid || isLoading'>
+                                    Submit   <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i> 
+
+                            </button>
+                           
+                        </form>
+                        <form [formGroup]="forgotFormWithOtp" (submit)="verifyOtp()" *ngIf="!isShown && ispasswordFormShown" >
+                            <div class="form-group">
+
+                                <input OnlyNumber="true" class="form-control" formControlName="recoverMobile" placeholder="Mobile" maxlength="10">
+                            </div>
+                            <div class="form-group" >
+
+                                    <input class="form-control" formControlName="otp" placeholder="Enter OTP" type="text" >
+                                </div>
+                            
+                            <div class="form-group text-right">
+                                    
+                                    <a ><i class="fa fa-refresh mr-1"></i>Resend OTP</a>
+                                </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]='!forgotFormWithOtp.valid || isLoading'>
+                                    Verify OTP <!--  <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i> -->
+
+                            </button>
+                           
+                        </form>
+                        <form [formGroup]="changePassForm" (submit)="changePass()" *ngIf="!ispasswordFormShown" >
+                            <div class="form-group">
+                                <div *ngIf="isAlertShown" [ngClass]="alertClass" >
+                                    {{alertMessage}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <input type="password" class="form-control" formControlName="p1" placeholder="Enter Password" >
+                            </div>
+                            <div class="form-group" >
+
+                                    <input class="form-control" formControlName="p2" placeholder="Enter Confirm Password" type="password" >
+                                </div>
+                            
+                            
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]='!changePassForm.valid || isLoading'>
+                                    Change Password <!--  <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i> -->
+
+                            </button>
+                           
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
